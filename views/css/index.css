@@ -1,8 +1,7 @@
 .main{
     margin: auto;
-    margin-top: 20px;
-    width: 80%;
-    text-align: center;    
+    margin-top: 20px;    
+    
 }
 
 .map{
@@ -12,3 +11,17 @@
     text-align: center;
 }
 
+.container{
+    margin-left: 7%;
+    margin-top: 20px;
+    width: 40%;    
+}
+
+.container2{
+    margin-left: 40%;
+    margin-right: 20px;  
+    margin-top: 20px;
+    width: 60%;    
+}
+
+#mapid { height: 400px; width: 600px; }
