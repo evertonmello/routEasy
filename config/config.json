@@ -1,0 +1,20 @@
+{
+    "deliveryValdtr" : {         
+        "nome": "",
+        "peso": 123123,
+            "endereco" :{
+                "Logradouro" : "",
+                "Número" : 234,
+                "Bairro": "",
+                "Complemento": "",
+                "Cidade": "",
+                "Estado": "",
+                "País": "",
+                "Geolocalização": {
+                    "Latitude" : "",
+                    "Longitude" : ""
+                }
+            }
+    },
+    "db":"deliveries"
+}
