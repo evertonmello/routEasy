@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
 var DeliverySchema = mongoose.Schema({
-    nome: {type : String, require : true },
-    peso:  {type : Number, require : true },
+    nome: String,
+    peso: Number,
     endereco :{
         Logradouro : String,
         Número : Number,

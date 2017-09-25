@@ -1,3 +1,9 @@
 angular.module("desafio").factory("desafioAPI", function ($http) {
- return null;
+    var _delClient = function () {        
+        return $http.delete("http://localhost:3000/deliveries/");        
+    };
+
+    return {
+        delCliente: _delClient
+    };
 });
