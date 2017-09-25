@@ -1,7 +1,12 @@
 angular.module("desafio").controller("desafioCtrl", function ($scope, $http, desafioAPI) {
     var geo = "https://maps.googleapis.com/maps/api/geocode/json?address=";
     var key = "&key=AIzaSyCyQFMKJb00p86hSOKmUGxACyBPf39YVKM";
-    
+
+    var x = desafioAPI.getClients().then(function (result) {
+        console.log($scope.clientes)        
+        $scope.clientes = result.data;
+    });
+
     $scope.lat = "Latitude";
     $scope.long = "Longitude";
     var mymap = L.map('mapid').setView([-23.5506187, -46.6766643], 14);
@@ -23,28 +28,32 @@ angular.module("desafio").controller("desafioCtrl", function ($scope, $http, des
                 nome: $scope.nome,
                 peso: $scope.peso,
                 endereco: {
-                    Número: obj.address_components[0].long_name,
-                    Logradouro: obj.address_components[1].long_name,
-                    Bairro: obj.address_components[2].long_name,
-                    Complemento: obj.address_components[6].long_name,
-                    Cidade: obj.address_components[3].long_name,
-                    Estado: obj.address_components[4].long_name,
-                    País: obj.address_components[5].long_name,
-                    Geolocalização: {
-                        Latitude: obj.geometry.location.lat,
-                        Longitude: obj.geometry.location.lng
+                    numero: obj.address_components[0].long_name,
+                    logradouro: obj.address_components[1].long_name,
+                    bairro: obj.address_components[2].long_name,
+                    complemento: obj.address_components[6].long_name,
+                    cidade: obj.address_components[3].long_name,
+                    estado: obj.address_components[4].long_name,
+                    pais: obj.address_components[5].long_name,
+                    geolocalizacao: {
+                        lat: obj.geometry.location.lat,
+                        lng: obj.geometry.location.lng
                     }
                 }
             };
             $scope.long = obj.geometry.location.lng;
             $scope.lat = obj.geometry.location.lat;
-          
+
         });
     };
-    $scope.save = function(){
-        $http.post('http://localhost:3000/deliveries/',  $scope.cliente).then(alert("cliente cadastrado " ));
+    $scope.save = function () {
+        $http.post('http://localhost:3000/deliveries/', $scope.cliente).then(alert("cliente cadastrado "));
+        console.log($scope.cliente);
+        $scope.nome = "";
+        $scope.peso = "";
+        $scope.end = "";
     };
-    
+
     $scope.removeClient = function () {
         desafioAPI.delCliente().then(alert("clientes excluídos"));
         $scope.long = "Longitude";

@@ -1,20 +1,20 @@
 {
-    "deliveryValdtr" : {         
+    "deliveryValdtr": {
         "nome": "",
-        "peso": 123123,
-            "endereco" :{
-                "Logradouro" : "",
-                "Número" : 234,
-                "Bairro": "",
-                "Complemento": "",
-                "Cidade": "",
-                "Estado": "",
-                "País": "",
-                "Geolocalização": {
-                    "Latitude" : "",
-                    "Longitude" : ""
-                }
+        "peso": 12,
+        "endereco": {
+            "logradouro": "",
+        "numero": "",
+        "bairro": "",
+        "complemento": "",
+        "cidade": "",
+        "estado": "",
+        "pais": "",
+        "geolocalizacao": {
+            "lat": "",
+            "lng": ""
             }
+        }
     },
-    "db":"deliveries"
+    "db": "deliveries"
 }

@@ -64,8 +64,7 @@
 				 <div id="mapid"></div>
 			</table>
 			<table style="height: 150px" class="table">
-				<tr>
-					<th></th>
+				<tr>					
 					<th>Nome</th>
 					<th>Rua</th>
 					<th>Cidade</th>
@@ -75,11 +74,14 @@
 					<th>Lng</th>
 					<th></th>
 				</tr>
-				<tr ng-repeat="contato in contatos">				
-					<td>{{contato.nome}}</td>
-					<td>{{contato.telefone}}</td>
-					<td>{{contato.operadora.nome}}</td>
-					<td><div style="width: 20px; height: 20px;"></div></td>
+				<tr ng-repeat="cliente in clientes">				
+					<td>{{cliente.nome}}</td>
+					<td>{{cliente.endereco.logradouro}}</td>
+					<td>{{cliente.endereco.cidade}}</td>
+					<td>{{cliente.endereco.pais}}</td>
+					<td>{{cliente.peso}}</td>
+					<td>{{cliente.endereco.geolocalizacao.lat}}</td>
+					<td>{{cliente.endereco.geolocalizacao.lng}}</td>				
 				</tr>
 			</table>
 		</div>

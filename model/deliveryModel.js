@@ -4,16 +4,16 @@ var DeliverySchema = mongoose.Schema({
     nome: String,
     peso: Number,
     endereco :{
-        Logradouro : String,
-        Número : Number,
-        Bairro: String,
-        Complemento: String,
-        Cidade: String,
-        Estado: String,
-        País: String,
-        Geolocalização: {
-            Latitude : String,
-            Longitude : String
+        logradouro : String,
+        numero : Number,
+        bairro: String,
+        complemento: String,
+        cidade: String,
+        estado: String,
+        pais: String,
+        geolocalizacao: {
+            lat : String,
+            lng : String
         }
     }
 });
