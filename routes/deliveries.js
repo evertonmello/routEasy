@@ -16,7 +16,7 @@ router.post('/', function (req, res, next) {
     delivery.save(function (err, delivery) {
         try {
             //validação extra dos campos..
-            assert.deepEqual(Object.keys(req.body), Object.keys(config.deliveryValdtr), 'aassa');
+            assert.deepEqual(Object.keys(req.body), Object.keys(config.deliveryValdtr), '');
             res.send("salvo");
         } catch (err) {            
             err.status = 400;
