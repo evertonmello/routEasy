@@ -9,8 +9,12 @@ angular.module("desafio").controller("desafioCtrl", function ($scope, $http, des
         desafioAPI.getClients()
             .then(function (result) {
                 $scope.clientes = result.data;
-                console.log(typeof ($scope.clientes));
-                $scope.resumo = "Total de clientes: " + Object.keys($scope.clientes).length + "; Peso total: ";
+
+                for (var i =0,total =0; i< Object.keys($scope.clientes).length; i++){
+                   total += $scope.clientes[i].peso;
+                }          
+               
+                $scope.resumo = "Total de clientes: " + Object.keys($scope.clientes).length + "; Peso total: " + total + " kg";
             });
         $scope.long = "Longitude";
         $scope.lat = "Latitude";
@@ -63,9 +67,8 @@ angular.module("desafio").controller("desafioCtrl", function ($scope, $http, des
         desafioAPI.getClients()
             .then(function (result) {
                 $scope.clientes = result.data;
-                 init();  
-            });       
-        
+                init();
+            });
     };
 
     $scope.removeClient = function () {
