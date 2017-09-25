@@ -2,8 +2,8 @@ angular.module("desafio").controller("desafioCtrl", function ($scope, $http, des
     var geo = "https://maps.googleapis.com/maps/api/geocode/json?address=";
     var key = "&key=AIzaSyCyQFMKJb00p86hSOKmUGxACyBPf39YVKM";
 
-    var x = desafioAPI.getClients().then(function (result) {
-        console.log($scope.clientes)        
+    desafioAPI.getClients().then(function (result) {
+        console.log($scope.clientes)
         $scope.clientes = result.data;
     });
 
@@ -49,6 +49,11 @@ angular.module("desafio").controller("desafioCtrl", function ($scope, $http, des
     $scope.save = function () {
         $http.post('http://localhost:3000/deliveries/', $scope.cliente).then(alert("cliente cadastrado "));
         console.log($scope.cliente);
+        desafioAPI.getClients().then(function (result) {
+            console.log($scope.clientes)
+            $scope.clientes = result.data;
+        });
+
         $scope.nome = "";
         $scope.peso = "";
         $scope.end = "";
@@ -56,6 +61,11 @@ angular.module("desafio").controller("desafioCtrl", function ($scope, $http, des
 
     $scope.removeClient = function () {
         desafioAPI.delCliente().then(alert("clientes excluídos"));
+        desafioAPI.getClients().then(function (result) {
+            console.log($scope.clientes)
+            $scope.clientes = result.data;
+        });
+
         $scope.long = "Longitude";
         $scope.lat = "Latitude";
         $scope.nome = "";
