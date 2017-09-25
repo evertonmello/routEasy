@@ -10,10 +10,10 @@ angular.module("desafio").controller("desafioCtrl", function ($scope, $http, des
             .then(function (result) {
                 $scope.clientes = result.data;
 
-                for (var i =0,total =0; i< Object.keys($scope.clientes).length; i++){
-                   total += $scope.clientes[i].peso;
-                }          
-               
+                for (var i = 0, total = 0; i < Object.keys($scope.clientes).length; i++) {
+                    total += $scope.clientes[i].peso;
+                }
+
                 $scope.resumo = "Total de clientes: " + Object.keys($scope.clientes).length + "; Peso total: " + total + " kg";
             });
         $scope.long = "Longitude";
@@ -61,14 +61,12 @@ angular.module("desafio").controller("desafioCtrl", function ($scope, $http, des
     };
     $scope.save = function () {
         $scope.buscar();
-        $http.post('http://localhost:3000/deliveries/', $scope.cliente)
-            .then(alert("cliente cadastrado "));
+        $http.post('http://localhost:3000/deliveries/', $scope.cliente).then(alert("cliente cadastrado "));
 
-        desafioAPI.getClients()
-            .then(function (result) {
-                $scope.clientes = result.data;
-                init();
-            });
+        desafioAPI.getClients().then(function (result) {
+            $scope.clientes = result.data;
+            init();
+        });
     };
 
     $scope.removeClient = function () {
