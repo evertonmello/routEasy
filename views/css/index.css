@@ -4,6 +4,15 @@
     
 }
 
+html {
+ position: relative;
+  height: 100%; /* not min-height */
+}
+
+body{
+    height:100%;
+}
+
 .map{
     margin: auto;
     margin-top: 20px;
@@ -21,7 +30,8 @@
     margin-left: 40%;
     margin-right: 20px;  
     margin-top: 20px;
-    width: 60%;    
+    width: 60%; 
+    height: 100%;   
 }
 
 #mapid { height: 400px; width: 600px; }

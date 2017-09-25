@@ -1,26 +1,25 @@
 angular.module("desafio").controller("desafioCtrl", function ($scope, $http, desafioAPI) {
     var geo = "https://maps.googleapis.com/maps/api/geocode/json?address=";
     var key = "&key=AIzaSyCyQFMKJb00p86hSOKmUGxACyBPf39YVKM";
-
+    
     $scope.lat = "Latitude";
     $scope.long = "Longitude";
     var mymap = L.map('mapid').setView([-23.5506187, -46.6766643], 14);
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(mymap);
     L.marker([-23.5506187, -46.6766643]).addTo(mymap).bindPopup($scope.nome + " " + $scope.peso);
 
-    $scope.addCliente = function () {
+    $scope.buscar = function () {
         var url = geo + $scope.end.split(" ").join("+") + key;
         var data = $http.get(url);
 
         data.then(function (result) {
             var obj = result.data.results[0];
-            console.log(obj.geometry.location.lat);
             mymap.setView([obj.geometry.location.lat, obj.geometry.location.lng], 14);
 
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(mymap);
             L.marker([obj.geometry.location.lat, obj.geometry.location.lng]).addTo(mymap).bindPopup($scope.nome + " " + $scope.peso);
 
-            var cliente = {
+            $scope.cliente = {
                 nome: $scope.nome,
                 peso: $scope.peso,
                 endereco: {
@@ -39,11 +38,13 @@ angular.module("desafio").controller("desafioCtrl", function ($scope, $http, des
             };
             $scope.long = obj.geometry.location.lng;
             $scope.lat = obj.geometry.location.lat;
-
-            $http.post('http://localhost:3000/deliveries/', cliente).then(console.log(cliente));
+          
         });
     };
-
+    $scope.save = function(){
+        $http.post('http://localhost:3000/deliveries/',  $scope.cliente).then(alert("cliente cadastrado " ));
+    };
+    
     $scope.removeClient = function () {
         desafioAPI.delCliente().then(alert("clientes excluídos"));
         $scope.long = "Longitude";
@@ -51,5 +52,5 @@ angular.module("desafio").controller("desafioCtrl", function ($scope, $http, des
         $scope.nome = "";
         $scope.peso = "";
         $scope.end = "";
-    }
+    };
 });	
