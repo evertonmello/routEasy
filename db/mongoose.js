@@ -5,7 +5,7 @@ var db = mongoose.connection;
 mongoose.connect('mongodb://localhost/' + config.db, { useMongoClient: true });
 
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('openUri', function () {
+db.once('open', function () {
   console.log('conectado no banco ' + config.db);
 });
 
